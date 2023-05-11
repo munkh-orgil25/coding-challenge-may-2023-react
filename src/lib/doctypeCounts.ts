@@ -1,5 +1,5 @@
 import moment from "moment";
-import { Doctype, Document, Organization, Tabletype } from "../types";
+import { Doctype, Document,  Tabletype } from "../types";
 
 interface DocCount {
   name: string;

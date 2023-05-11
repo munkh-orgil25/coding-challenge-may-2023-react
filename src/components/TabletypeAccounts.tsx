@@ -2,12 +2,11 @@ import {
   Card,
   Dropdown,
   DropdownItem,
-  Flex,
   List,
   ListItem,
   Title,
 } from "@tremor/react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   useFetchAccountInfosQuery,
   useFetchDocumentInfosQuery,
