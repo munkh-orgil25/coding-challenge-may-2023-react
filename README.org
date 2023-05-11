@@ -1,0 +1,121 @@
+#+TITLE: FXR React coding challenge - may 2023
+#+BIND: org-export-use-babel nil
+#+AUTHOR: July
+#+EMAIL: <july@fxr-insights.com>
+#+DATE: February, 2023
+#+LATEX: \setlength\parindent{0pt}
+#+LATEX_HEADER: \usepackage{minted}
+#+LATEX_HEADER: \usepackage[margin=1.2in]{geometry}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{adjustbox}
+#+LATEX_HEADER_EXTRA:  \usepackage{mdframed}
+#+LATEX_HEADER_EXTRA: \BeforeBeginEnvironment{minted}{\begin{mdframed}}
+#+LATEX_HEADER_EXTRA: \AfterEndEnvironment{minted}{\end{mdframed}}
+#+LATEX_HEADER_EXTRA: \BeforeBeginEnvironment{tabular}{\begin{adjustbox}{center}}
+#+LATEX_HEADER_EXTRA: \AfterEndEnvironment{tabular}{\end{adjustbox}}
+#+MACRO: NEWLINE @@latex:\\@@ @@html:<br>@@
+#+PROPERTY: header-args :exports both :session README :cache :results value
+#+OPTIONS: ^:nil
+#+LATEX_COMPILER: pdflatex
+
+* introduction
+
+in this coding challenge, we want you to create an overview for the documents
+that have been uploaded for an organisation, and especially new documents that
+arrive over time.
+
+an organisation is a company which provides financial statements/documents to
+people. if those people are users of FXR, they have an account in which they
+upload those documents. this means that many accounts might upload data from
+one organisation.
+
+we classify each document as a certain "type" of document, called doctypes. so
+one account might upload a bunch of documents of doctype "buma-stemra_csv_0"
+and others of doctype "buma-stemra_csv_1". and a second account might upload
+documents that are classified as either of those doctypes (or others). or,
+uploaded documents might be unrecognized, if they have a new format.
+
+one documents contains certain "types" of tabular data. we classify these as
+"tabletypes". tabletypes are specific to one organisation, but in theory, they
+can occur in different doctypes. like, if doctype A and B both contain the same
+table (same columns), that's the same tabletype, then.
+
+for each doctype and each tabletype, we set some configuration. this happens at
+a certain moment in time, and it happens, of course, based on the documents
+that are in the system at that time. however, it might happen that documents
+come in later that change our understanding of certain doctypes. that's why
+it's important that we have some kind of overview of when documents came in.
+
+apart from that, we don't really have a clear overview at the moment of which
+documents (of all accounts) belong to one single organisation, and how many are
+classified as which doctype, and so on.
+
+we want you to be creative and create a clear and informative overview of all
+the doctypes and tabletypes for an organisation. this overview should indicate
+things like:
+- for each doctype, how many documents are there? how many accounts, and which
+  ones, have uploaded documents of this doctype?
+- when was that doctype last updated?
+- how many documents of that doctype were uploaded after the doctype was last
+  updated?
+- for that doctype, what is the latest moment a document was uploaded? (this
+  helps us assess whether that doctype is still being used actively by the
+  organisation when they are sending out new documents.)
+- all these points, but then for tabletypes.
+- for doctypes specifically, how many tables of each tabletype do we see for
+  each document (or maybe the average of all document). you can use
+  =tabletype2tnum2document_table_id= for this.
+
+but, we also want you to think about what you think would be useful to show. of
+course, you don't really know how our internal dashboards work, so it can be
+difficult to really judge what is 'useful', but you can make some assumptions:
+we'll look more at your reasoning than the actual final result.
+
+these components will live on an overview page which already shows total number
+of doctypes, tabletypes, documents, and accounts. so you don't need to display
+that.
+
+keep in mind that a document (and also a doctype) can have multiple
+tabletypes. we're not sure if this will really impact the visualizations, but
+just keep it in mind.
+
+we're giving you a completely empty vite project. in our project, we have
+tailwindcss, twin.macro, and we have an internal component library already. try
+to make it look okay, but you don't need to worry too much about the styling,
+it can look a bit ugly. add all your components on the main page.
+
+in =src/api.ts=, there are a few fake api endpoints which return example data.
+
+good luck! and let me know if you have any questions. questions are fine!
+
+~july
+
+* getting started
+
+** create a private fork
+
+please create a *private fork* by following the steps below. don't create a
+public fork, because other applicants might be able to read your solution. if
+you are unable to create a private fork, clone the repo, commit your solution,
+and send us a zip file of your solution.
+
+1. go to https://github.com/new/import
+2. enter the url of this repo, and create a new repository under your account
+   with visibility set to private.
+3. invite my github user as collaborators: =jpjagt=
+
+
+** setting up the environment
+
+install the dependencies:
+
+#+BEGIN_SRC python
+cd path/to/cloned/repo
+yarn install
+yarn dev
+#+END_SRC
+
+(you can also use =npm install && npm run dev=.)
+
+then, you can start working on the challenge. push your changes to github. once
+you're done, please send me a message (:
