@@ -11,3 +11,7 @@ export const useFetchDoctypeInfosQuery = () => {
 export const useFetchDocumentInfosQuery = () => {
   return { data: apiData['documentInfosOfOrg'], isFetching: false }
 }
+
+export const useFetchAccountInfosQuery = () => {
+  return { data: apiData['accountInfos'], isFetching: false }
+}
